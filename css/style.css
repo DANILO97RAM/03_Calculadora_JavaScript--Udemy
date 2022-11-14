@@ -13,8 +13,8 @@ center{
   height: 60px;
   text-align: center;
   line-height: 60px;
-  background-color: blue;
-  color: white;
+  background-color: yellow;
+  color: black;
   font-weight: bold;
   border: 6px;
   border-radius: 20px;
@@ -30,7 +30,7 @@ center{
   background-color:#ddd;
 }
 
-#display{
+#operaciones{
   position: relative;
   margin: 20px auto;
   width: 70%;
