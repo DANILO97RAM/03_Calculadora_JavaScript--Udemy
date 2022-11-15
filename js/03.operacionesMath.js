@@ -24,82 +24,7 @@ var m = {
       p.teclas[i].addEventListener('click',m.oprimirTecla)
     }
   },
-  // activar el evento del teclado
-  teclado: function(){
-    document.addEventListener('keydown',m.oprimir);
-    
-  },
 
-  oprimir: function(tecla){
-    if (tecla.keyCode==48 || tecla.keyCode==96){
-      p.accion = 'numero';
-      p.digito = 0;
-    };
-    if (tecla.keyCode==49 || tecla.keyCode==97){
-      p.accion = 'numero';
-      p.digito = 1;
-    }
-    if (tecla.keyCode==50 || tecla.keyCode==98){
-      p.accion = 'numero';
-      p.digito = 2;
-    }
-    if (tecla.keyCode==51 || tecla.keyCode==99){
-      p.accion = 'numero';
-      p.digito = 3;
-    };
-    if (tecla.keyCode==52 || tecla.keyCode==100){
-      p.accion = 'numero';
-      p.digito = 4;
-    }
-    if (tecla.keyCode==53 || tecla.keyCode==101){
-      p.accion = 'numero';
-      p.digito = 5;
-    }
-    if (tecla.keyCode==54 || tecla.keyCode==102){
-      p.accion = 'numero';
-      p.digito = 6;
-    };
-    if (tecla.keyCode==55 || tecla.keyCode==103){
-      p.accion = 'numero';
-      p.digito = 7;
-    } 
-    if (tecla.keyCode==56 || tecla.keyCode==104){
-      p.accion = 'numero';
-      p.digito = 8;
-    }
-    if (tecla.keyCode==57 || tecla.keyCode==105){
-      p.accion = 'numero';
-      p.digito = 9;
-    }
-    if (tecla.keyCode==187 || tecla.keyCode==107){
-      p.accion = 'oper';
-      p.digito = '+';
-    }
-    if (tecla.keyCode==189 || tecla.keyCode==109){
-      p.accion = 'oper';
-      p.digito = '-';
-    }
-    if (tecla.keyCode==88 || tecla.keyCode==106){
-      p.accion = 'oper';
-      p.digito = '*';
-    }
-    if (tecla.keyCode==191){
-      p.accion = 'oper';
-      p.digito = '/';
-    }
-    if (tecla.keyCode==190 || tecla.keyCode==110){
-      p.accion = 'decimal';
-      p.digito = '.';
-    }
-    if (tecla.keyCode==13){
-      p.accion = 'resultado';
-    }
-    if (tecla.keyCode==8 || tecla.keyCode==46){
-        m.borrarCalculadora();
-    }
-    // console.log('Tecla Press: ',tecla.keyCode);
-    m.calculadora(p.accion,p.digito);
-  },
   // event captura todo las accion del click. El metodo target selecciona
   // el elemento, y desde target, llamamos la clase.
   oprimirTecla: function(event){
@@ -143,6 +68,7 @@ var m = {
             p.resultado = false;
           }
 
+         
         }
         break
       case 'decimal':
@@ -168,4 +94,3 @@ var m = {
 
 // inicializador de la calculadora
 m.inicio();
-m.teclado();
