@@ -7,9 +7,6 @@ var p = {
   digito: null,
   // contador signos operaciones para no mostrar repetidos
   cantidadSignos: 0,
-  cantidadDecimal: false,
-  // identificar un resultado (signo igual), que me avise, para limpiar el tablero
-  resultado: false,
   operaciones: document.querySelector('#operaciones'),
 }
 
@@ -39,15 +36,7 @@ var m = {
         if (p.operaciones.innerHTML == 0){
           p.operaciones.innerHTML = digito;  
         } else{
-          if (p.resultado){
-            // si se presiona igual, que se reinicie
-            p.resultado = false;
-            p.operaciones.innerHTML = digito;
-          } else {
-            // si no se ha dado igual, que siga agregando
-            p.operaciones.innerHTML += digito;
-          }
-          
+          p.operaciones.innerHTML += digito;
         }
         break
       case 'oper':
@@ -59,25 +48,16 @@ var m = {
             p.operaciones = 0;
           } else { //si es diferente de cero, agrega el signo de operacion
             p.operaciones.innerHTML += digito;
-            // cada que sea un nuevo numero, se habilita el decimal
-            p.cantidadDecimal = false;
-            // cada que se agregue un signo, se reinicie la cal
-            p.resultado = false;
           }
 
          
         }
         break
       case 'decimal':
-        if (!p.cantidadDecimal){
-          p.operaciones.innerHTML += digito;
-          p.cantidadDecimal = true;
-        }         
+        console.log('decimal');
         break
       case 'resultado':
-        // todo lo que traiga la caja. eval, desde js 
-        p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
-        p.resultado = true;
+        console.log('resultado');
         break
     }
   },
