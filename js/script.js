@@ -95,7 +95,8 @@ var m = {
       p.accion = 'resultado';
     }
     if (tecla.keyCode==8 || tecla.keyCode==46){
-        m.borrarCalculadora();
+      p.accion = ''; // se encia la propiedad vacia
+      m.borrarCalculadora();
     }
     // console.log('Tecla Press: ',tecla.keyCode);
     m.calculadora(p.accion,p.digito);
@@ -161,6 +162,7 @@ var m = {
   },
 
   borrarCalculadora: function(){
+    p.resultado = false;
     p.operaciones.innerHTML = 0;
   }
 

@@ -95,7 +95,13 @@ var m = {
       p.accion = 'resultado';
     }
     if (tecla.keyCode==8 || tecla.keyCode==46){
-        m.borrarCalculadora();
+      p.accion = ''; // se encia la propiedad vacia
+      m.borrarCalculadora();
+    }
+    else {
+        //  cuando se presione algo diferente
+        p.accion = '';
+        p.digito = '';
     }
     // console.log('Tecla Press: ',tecla.keyCode);
     m.calculadora(p.accion,p.digito);
@@ -114,7 +120,7 @@ var m = {
     switch(accion){
       case 'numero':
         p.cantidadSignos = 0;
-        if (p.operaciones.innerHTML == 0){
+        if (p.operaciones.innerHTML == '0'){
           p.operaciones.innerHTML = digito;  
         } else{
           if (p.resultado){
@@ -131,9 +137,9 @@ var m = {
       case 'oper':
         //  cartucho de signos, cuantificar canridad de signos
         p.cantidadSignos++
-        if (p.cantidadSignos == 1){
+        if (p.cantidadSignos == '1'){
           // pregunta para no poner signo de operacion cuando haya un cero
-          if (p.operaciones.innerHTML == 0){
+          if (p.operaciones.innerHTML == '0'){
             p.operaciones = 0;
           } else { //si es diferente de cero, agrega el signo de operacion
             p.operaciones.innerHTML += digito;
@@ -146,7 +152,7 @@ var m = {
         }
         break
       case 'decimal':
-        if (!p.cantidadDecimal){
+        if (!p.cantidadDecimal && p.cantidadSignos!=1){
           p.operaciones.innerHTML += digito;
           p.cantidadDecimal = true;
           p.resultado = false;
@@ -155,12 +161,17 @@ var m = {
       case 'resultado':
         // todo lo que traiga la caja. eval, desde js 
         p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+        var expression = /./g;
+        if (!expression.test(p.operaciones.innerHTML)){
+            p.cantidadDecimal = true;
+        }
         p.resultado = true;
         break
     }
   },
 
   borrarCalculadora: function(){
+    p.resultado = false;
     p.operaciones.innerHTML = 0;
   }
 
